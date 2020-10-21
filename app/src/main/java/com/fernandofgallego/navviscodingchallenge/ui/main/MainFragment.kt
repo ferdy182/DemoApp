@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fernandofgallego.navviscodingchallenge.R
 import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.Repository
 import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
@@ -40,14 +39,14 @@ class MainFragment : Fragment() {
 
         binding.list.adapter = adapter
 
-        adapter.setItems(listOf(
-            DataItem.Section("Section 1"),
-            DataItem.Item("Item 1", false),
-            DataItem.Item("Item 2", true),
-            DataItem.Section("Section 2"),
-            DataItem.Section("Section 3"),
-            DataItem.Item("Item 1", true)
-        ))
+//        adapter.setItems(listOf(
+//            DataItem.Section("Section 1"),
+//            DataItem.Item("Item 1", false),
+//            DataItem.Item("Item 2", true),
+//            DataItem.Section("Section 2"),
+//            DataItem.Section("Section 3"),
+//            DataItem.Item("Item 1", true)
+//        ))
 
         viewModel = ViewModelProvider(this,
             MainViewModelFactory(
@@ -56,19 +55,12 @@ class MainFragment : Fragment() {
                 )
             )
         ).get(MainViewModel::class.java)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         viewModel.data.observe(this) {
             adapter.setItems(it)
             adapter.notifyDataSetChanged()
         }
 
-        viewModel.parseNumbers(viewModel.getNumbers())
-
-
-
+        viewModel.update()
     }
 }
