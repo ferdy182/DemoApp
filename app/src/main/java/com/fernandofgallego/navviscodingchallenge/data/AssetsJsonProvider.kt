@@ -5,10 +5,10 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-class AssetsJsonProvider(private val assetManager: AssetManager): JsonProvider {
-    override fun getJson(filename: String): String {
+class AssetsJsonProvider(private val assetManager: AssetManager, private val filename: String): JsonProvider {
+    override fun getJson(): String {
         return try {
-            val reader = BufferedReader(InputStreamReader(assetManager.open("numbers.json")))
+            val reader = BufferedReader(InputStreamReader(assetManager.open(filename)))
             val content = reader.readText()
             reader.close()
             content

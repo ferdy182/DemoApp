@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
+import com.fernandofgallego.navviscodingchallenge.data.NetworkJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.Repository
 import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
 
@@ -51,7 +52,8 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this,
             MainViewModelFactory(
                 Repository(
-                    AssetsJsonProvider(context!!.assets)
+                    AssetsJsonProvider(context!!.assets, "numbers.json"),
+                    NetworkJsonProvider("http://navvis.com/numbers.json")
                 )
             )
         ).get(MainViewModel::class.java)
