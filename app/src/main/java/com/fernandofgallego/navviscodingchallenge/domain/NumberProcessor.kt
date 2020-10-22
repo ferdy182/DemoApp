@@ -3,12 +3,15 @@ package com.fernandofgallego.navviscodingchallenge.domain
 import com.fernandofgallego.navviscodingchallenge.data.Item
 import com.fernandofgallego.navviscodingchallenge.ui.main.DataItem
 import kotlin.experimental.and
+import kotlin.experimental.inv
+import kotlin.experimental.or
 
 class NumberProcessor {
     companion object {
-        const val TWO_LEAST_SIGNIFICANT_BITS = 3.toByte()
-        const val ONE_MOST_SIGNIFICANT_BIT = 128.toByte()
-        const val MIDDLE_VALUE_BITS = 124.toByte()
+        const val TWO_LEAST_SIGNIFICANT_BITS = 3.toByte() // 00000011
+        const val ONE_MOST_SIGNIFICANT_BIT = 128.toByte() // 10000000
+        val MIDDLE_VALUE_BITS =
+            (TWO_LEAST_SIGNIFICANT_BITS or ONE_MOST_SIGNIFICANT_BIT).inv()       // 01111100
 
     }
 
@@ -34,6 +37,7 @@ class NumberProcessor {
             items.sortedBy { it.value }.forEach {
                 dataItems.add(DataItem.Item(it.value, it.checked))
             }
+
         }
         return dataItems
     }
