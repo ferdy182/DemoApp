@@ -1,5 +1,6 @@
 package com.fernandofgallego.navviscodingchallenge.domain
 
+import android.util.Log
 import com.fernandofgallego.navviscodingchallenge.data.Item
 import com.fernandofgallego.navviscodingchallenge.data.DataItem
 import kotlin.experimental.and
@@ -18,6 +19,7 @@ class NumberProcessor {
     /*
     Converts a list of bytes into Items with section, value and check
      */
+    @ExperimentalUnsignedTypes
     fun parseNumbers(numbers: List<Byte>): List<Item> {
         val list = mutableListOf<Item>()
         numbers.forEach { number ->
@@ -33,6 +35,8 @@ class NumberProcessor {
                     checkedBit == ONE_MOST_SIGNIFICANT_BIT
                 )
                 list.add(item)
+            } else {
+                Log.i(javaClass.name, "Number not valid $number")
             }
         }
         return list
@@ -55,5 +59,9 @@ class NumberProcessor {
         return dataItems
     }
 
-    private fun validateInput(input: Byte): Boolean = input in 0..255
+    @ExperimentalUnsignedTypes
+    private fun validateInput(input: Byte): Boolean {
+        return input.toUByte() <= 255.toUByte()
+    }
+
 }

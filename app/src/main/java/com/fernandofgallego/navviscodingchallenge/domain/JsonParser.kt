@@ -28,5 +28,5 @@ class JsonParser {
         return list
     }
 
-    private fun validateInput(input: Any): Boolean = input !is Int
+    private fun validateInput(input: Any): Boolean = input is Int
 }
