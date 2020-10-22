@@ -1,5 +1,7 @@
 package com.fernandofgallego.navviscodingchallenge
 
+import com.fernandofgallego.navviscodingchallenge.data.DataItem
+import com.fernandofgallego.navviscodingchallenge.data.Item
 import com.fernandofgallego.navviscodingchallenge.domain.NumberProcessor
 import org.junit.Test
 
@@ -34,9 +36,13 @@ class NumberProcessorTest {
     fun parsingBigNumber_isCorrect() {
         val r = processor.parseNumbers(listOf(Int.MAX_VALUE.toByte()))
         assertTrue(r.isEmpty())
+    }
 
-
-
+    @Test
+    fun convertItemIntoDataItem() {
+        val r = processor.convertItems(listOf(Item("SECTION1", "Item1", true)))
+        assertTrue(r.contains(DataItem.Section("SECTION1")))
+        assertTrue(r.contains(DataItem.Item("Item1", true)))
     }
 
 

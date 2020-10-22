@@ -16,7 +16,7 @@ class MainViewModel(private val repository: Repository, private val numberProces
         withContext(Dispatchers.IO) {
             val numbers = repository.getNumbers()
             val items = numberProcessor.parseNumbers(numbers)
-            data.postValue(numberProcessor.parseItems(items))
+            data.postValue(numberProcessor.convertItems(items))
         }
     }
 

@@ -15,6 +15,9 @@ class NumberProcessor {
 
     }
 
+    /*
+    Converts a list of bytes into Items with section, value and check
+     */
     fun parseNumbers(numbers: List<Byte>): List<Item> {
         val list = mutableListOf<Item>()
         numbers.forEach { number ->
@@ -35,7 +38,10 @@ class NumberProcessor {
         return list
     }
 
-    fun parseItems(items: List<Item>): List<DataItem> {
+    /*
+    Converts a list of Items with section, value and check into DataItems for the list adapter
+     */
+    fun convertItems(items: List<Item>): List<DataItem> {
         val dataItems = mutableListOf<DataItem>()
         items.groupBy {
             it.section
