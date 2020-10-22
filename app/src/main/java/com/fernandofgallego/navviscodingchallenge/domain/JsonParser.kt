@@ -28,8 +28,5 @@ class JsonParser {
         return list
     }
 
-    private fun validateInput(input: Any): Boolean {
-        if(input !is Int) return false
-        return 0 <= input && input <= 255
-    }
+    private fun validateInput(input: Any): Boolean = input !is Int
 }

@@ -18,12 +18,19 @@ class NumberProcessor {
     fun parseNumbers(numbers: List<Byte>): List<Item> {
         val list = mutableListOf<Item>()
         numbers.forEach { number ->
-            val sectionValue = number and TWO_LEAST_SIGNIFICANT_BITS
-            val checkedBit = number and ONE_MOST_SIGNIFICANT_BIT
-            val value = (number and MIDDLE_VALUE_BITS).toInt() shr 2 // shift right 2 positions to get rid of the two least significant bits
+            if(validateInput(number)) {
+                val sectionValue = number and TWO_LEAST_SIGNIFICANT_BITS
+                val checkedBit = number and ONE_MOST_SIGNIFICANT_BIT
+                val value =
+                    (number and MIDDLE_VALUE_BITS).toInt() shr 2 // shift right 2 positions to get rid of the two least significant bits
 
-            val item = Item("SECTION$sectionValue", "Item$value", checkedBit == ONE_MOST_SIGNIFICANT_BIT)
-            list.add(item)
+                val item = Item(
+                    "SECTION$sectionValue",
+                    "Item$value",
+                    checkedBit == ONE_MOST_SIGNIFICANT_BIT
+                )
+                list.add(item)
+            }
         }
         return list
     }
@@ -41,4 +48,6 @@ class NumberProcessor {
         }
         return dataItems
     }
+
+    private fun validateInput(input: Byte): Boolean = input in 0..255
 }
