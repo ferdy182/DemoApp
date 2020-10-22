@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fernandofgallego.navviscodingchallenge.R
 import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.NetworkJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.Repository
 import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
 import com.fernandofgallego.navviscodingchallenge.domain.JsonParser
+import com.fernandofgallego.navviscodingchallenge.domain.NumberProcessor
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -46,10 +48,11 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this,
             MainViewModelFactory(
                 Repository(
-                    AssetsJsonProvider(context!!.assets, "numbers.json"),
-                    NetworkJsonProvider("https://navvis.com/numbers.json"),
+                    AssetsJsonProvider(context!!.assets, resources.getString(R.string.json_file)),
+                    NetworkJsonProvider(resources.getString(R.string.backend_url)),
                     JsonParser()
-                )
+                ),
+                NumberProcessor()
             )
         ).get(MainViewModel::class.java)
 
