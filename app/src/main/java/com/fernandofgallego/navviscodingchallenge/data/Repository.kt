@@ -1,34 +1,15 @@
 package com.fernandofgallego.navviscodingchallenge.data
 
 import android.util.Log
+import com.fernandofgallego.navviscodingchallenge.domain.JsonParser
 import com.fernandofgallego.navviscodingchallenge.domain.JsonProvider
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
 import java.lang.Exception
 import java.lang.RuntimeException
 
-class Repository(private val local: JsonProvider, private val remote: JsonProvider) {
+class Repository(private val local: JsonProvider, private val remote: JsonProvider, private val jsonParser: JsonParser) {
     suspend fun getNumbers(): List<Byte> {
-        val list = mutableListOf<Byte>()
-        try {
-            val jsonContent = getContents()
-            val jsonObject = JSONObject(jsonContent)
-            val array = jsonObject.getJSONArray("numbers")
-
-            for (i in 0.until(array.length())) {
-                val input = array.get(i)
-                if(validateInput(input))
-                    list.add((input as Int).toByte())
-            }
-        } catch (e: JSONException) {
-            Log.e(javaClass.name, "Error parsing JSON file: ${e.message}")
-        } catch (e: IOException) {
-            Log.e(javaClass.name, "Error reading file: ${e.message}")
-        } catch (e: Exception) {
-            Log.e(javaClass.name, "An error has occured: ${e.message}")
-        }
-        return list
+        val jsonContent = getContents()
+        return jsonParser.parseNumbers(jsonContent)
     }
 
     private suspend fun getContents(): String {
@@ -50,10 +31,5 @@ class Repository(private val local: JsonProvider, private val remote: JsonProvid
     private fun showError(message: String, e: Exception?) {
         Log.e(javaClass.name, message, e)
         //TODO show some UI error
-    }
-
-    private fun validateInput(input: Any): Boolean {
-        if(input !is Int) return false
-        return 0 <= input && input <= 255
     }
 }

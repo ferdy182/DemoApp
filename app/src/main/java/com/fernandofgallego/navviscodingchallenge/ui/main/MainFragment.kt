@@ -12,6 +12,7 @@ import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.NetworkJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.Repository
 import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
+import com.fernandofgallego.navviscodingchallenge.domain.JsonParser
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -46,7 +47,8 @@ class MainFragment : Fragment() {
             MainViewModelFactory(
                 Repository(
                     AssetsJsonProvider(context!!.assets, "numbers.json"),
-                    NetworkJsonProvider("https://navvis.com/numbers.json")
+                    NetworkJsonProvider("https://navvis.com/numbers.json"),
+                    JsonParser()
                 )
             )
         ).get(MainViewModel::class.java)
