@@ -31,7 +31,7 @@ class NumberProcessor {
             it.section
         }.toSortedMap().forEach { (key, items) ->
             dataItems.add(DataItem.Section(key))
-            items.forEach {
+            items.sortedBy { it.value }.forEach {
                 dataItems.add(DataItem.Item(it.value, it.checked))
             }
         }
