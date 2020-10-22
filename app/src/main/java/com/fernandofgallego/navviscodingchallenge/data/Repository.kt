@@ -17,7 +17,9 @@ class Repository(private val local: JsonProvider, private val remote: JsonProvid
             val array = jsonObject.getJSONArray("numbers")
 
             for (i in 0.until(array.length())) {
-                list.add(array.getInt(i).toByte())
+                val input = array.get(i)
+                if(validateInput(input))
+                    list.add((input as Int).toByte())
             }
         } catch (e: JSONException) {
             Log.e(javaClass.name, "Error parsing JSON file: ${e.message}")
@@ -48,5 +50,10 @@ class Repository(private val local: JsonProvider, private val remote: JsonProvid
     private fun showError(message: String, e: Exception?) {
         Log.e(javaClass.name, message, e)
         //TODO show some UI error
+    }
+
+    private fun validateInput(input: Any): Boolean {
+        if(input !is Int) return false
+        return 0 <= input && input <= 255
     }
 }
