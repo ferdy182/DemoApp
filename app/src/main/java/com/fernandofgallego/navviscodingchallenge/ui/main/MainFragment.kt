@@ -12,6 +12,8 @@ import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.NetworkJsonProvider
 import com.fernandofgallego.navviscodingchallenge.data.Repository
 import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -40,20 +42,11 @@ class MainFragment : Fragment() {
 
         binding.list.adapter = adapter
 
-//        adapter.setItems(listOf(
-//            DataItem.Section("Section 1"),
-//            DataItem.Item("Item 1", false),
-//            DataItem.Item("Item 2", true),
-//            DataItem.Section("Section 2"),
-//            DataItem.Section("Section 3"),
-//            DataItem.Item("Item 1", true)
-//        ))
-
         viewModel = ViewModelProvider(this,
             MainViewModelFactory(
                 Repository(
                     AssetsJsonProvider(context!!.assets, "numbers.json"),
-                    NetworkJsonProvider("http://navvis.com/numbers.json")
+                    NetworkJsonProvider("https://navvis.com/numbers.json")
                 )
             )
         ).get(MainViewModel::class.java)
@@ -63,6 +56,8 @@ class MainFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
 
-        viewModel.update()
+        GlobalScope.launch {
+            viewModel.update()
+        }
     }
 }

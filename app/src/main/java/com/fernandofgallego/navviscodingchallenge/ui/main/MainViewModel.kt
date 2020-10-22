@@ -4,6 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fernandofgallego.navviscodingchallenge.data.Item
 import com.fernandofgallego.navviscodingchallenge.data.Repository
+import com.fernandofgallego.navviscodingchallenge.domain.JsonProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.experimental.and
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
@@ -15,17 +18,12 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     }
     val data = MutableLiveData<List<DataItem>>()
 
-    fun update() {
-        val numbers = repository.getNumbers()
-        val items = parseNumbers(numbers)
-        data.postValue(parseItems(items))
-//        data.postValue(listOf(DataItem.Section("section 1"),
-//            DataItem.Item("item 1", true),
-//            DataItem.Item("item 2", false),
-//            DataItem.Section("section 2"),
-//            DataItem.Section("section 3"),
-//            DataItem.Item("item 1", true)
-//        ))
+    suspend fun update() {
+        withContext(Dispatchers.IO) {
+            val numbers = repository.getNumbers()
+            val items = parseNumbers(numbers)
+            data.postValue(parseItems(items))
+        }
     }
 
     private fun parseNumbers(numbers: List<Byte>): List<Item> {
