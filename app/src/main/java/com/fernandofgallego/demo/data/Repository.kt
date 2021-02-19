@@ -1,10 +1,8 @@
-package com.fernandofgallego.navviscodingchallenge.data
+package com.fernandofgallego.demo.data
 
 import android.util.Log
-import com.fernandofgallego.navviscodingchallenge.domain.JsonParser
-import com.fernandofgallego.navviscodingchallenge.domain.JsonProvider
-import java.lang.Exception
-import java.lang.RuntimeException
+import com.fernandofgallego.demo.domain.JsonParser
+import com.fernandofgallego.demo.domain.JsonProvider
 
 class Repository(private val local: JsonProvider, private val remote: JsonProvider, private val jsonParser: JsonParser) {
     suspend fun getNumbers(): List<Byte> {

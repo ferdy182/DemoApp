@@ -1,8 +1,8 @@
-package com.fernandofgallego.navviscodingchallenge
+package com.fernandofgallego.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.fernandofgallego.navviscodingchallenge.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.fernandofgallego.demo.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

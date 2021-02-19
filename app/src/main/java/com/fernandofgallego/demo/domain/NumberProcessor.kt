@@ -1,8 +1,8 @@
-package com.fernandofgallego.navviscodingchallenge.domain
+package com.fernandofgallego.demo.domain
 
 import android.util.Log
-import com.fernandofgallego.navviscodingchallenge.data.Item
-import com.fernandofgallego.navviscodingchallenge.data.DataItem
+import com.fernandofgallego.demo.data.DataItem
+import com.fernandofgallego.demo.data.Item
 import kotlin.experimental.and
 import kotlin.experimental.inv
 import kotlin.experimental.or

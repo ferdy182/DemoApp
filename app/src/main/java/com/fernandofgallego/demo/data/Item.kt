@@ -1,3 +1,3 @@
-package com.fernandofgallego.navviscodingchallenge.data
+package com.fernandofgallego.demo.data
 
 data class Item(val section: String, val value:String, val checked: Boolean)

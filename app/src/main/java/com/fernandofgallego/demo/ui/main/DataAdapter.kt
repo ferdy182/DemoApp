@@ -1,12 +1,12 @@
-package com.fernandofgallego.navviscodingchallenge.ui.main
+package com.fernandofgallego.demo.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.fernandofgallego.navviscodingchallenge.data.DataItem
-import com.fernandofgallego.navviscodingchallenge.databinding.ItemRowBinding
-import com.fernandofgallego.navviscodingchallenge.databinding.SectionBinding
+import com.fernandofgallego.demo.data.DataItem
+import com.fernandofgallego.demo.databinding.ItemRowBinding
+import com.fernandofgallego.demo.databinding.SectionBinding
 
 class DataAdapter: RecyclerView.Adapter<DataAdapter.BaseViewHolder>() {
     companion object {

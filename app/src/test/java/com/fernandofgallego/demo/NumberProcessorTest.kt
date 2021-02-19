@@ -1,11 +1,10 @@
-package com.fernandofgallego.navviscodingchallenge
+package com.fernandofgallego.demo
 
-import com.fernandofgallego.navviscodingchallenge.data.DataItem
-import com.fernandofgallego.navviscodingchallenge.data.Item
-import com.fernandofgallego.navviscodingchallenge.domain.NumberProcessor
-import org.junit.Test
-
+import com.fernandofgallego.demo.data.DataItem
+import com.fernandofgallego.demo.data.Item
+import com.fernandofgallego.demo.domain.NumberProcessor
 import org.junit.Assert.*
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).

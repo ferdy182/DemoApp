@@ -1,4 +1,4 @@
-package com.fernandofgallego.navviscodingchallenge.data
+package com.fernandofgallego.demo.data
 
 sealed class DataItem {
     data class Section(val title: String): DataItem()

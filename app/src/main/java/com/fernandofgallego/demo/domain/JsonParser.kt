@@ -1,10 +1,9 @@
-package com.fernandofgallego.navviscodingchallenge.domain
+package com.fernandofgallego.demo.domain
 
 import android.util.Log
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.lang.Exception
 
 class JsonParser {
     fun parseNumbers(jsonContent: String): List<Byte> {

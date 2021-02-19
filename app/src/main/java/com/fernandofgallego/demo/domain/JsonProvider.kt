@@ -1,6 +1,4 @@
-package com.fernandofgallego.navviscodingchallenge.domain
-
-import java.lang.Exception
+package com.fernandofgallego.demo.domain
 
 interface JsonProvider {
     suspend fun getJson(): JsonProviderResult

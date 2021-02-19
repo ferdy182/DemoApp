@@ -1,10 +1,9 @@
-package com.fernandofgallego.navviscodingchallenge.data
+package com.fernandofgallego.demo.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.fernandofgallego.navviscodingchallenge.domain.JsonProvider
-import kotlinx.coroutines.*
+import com.fernandofgallego.demo.domain.JsonProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

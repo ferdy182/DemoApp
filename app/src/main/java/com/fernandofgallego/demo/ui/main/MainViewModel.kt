@@ -1,10 +1,10 @@
-package com.fernandofgallego.navviscodingchallenge.ui.main
+package com.fernandofgallego.demo.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.fernandofgallego.navviscodingchallenge.data.DataItem
-import com.fernandofgallego.navviscodingchallenge.data.Repository
-import com.fernandofgallego.navviscodingchallenge.domain.NumberProcessor
+import com.fernandofgallego.demo.data.DataItem
+import com.fernandofgallego.demo.data.Repository
+import com.fernandofgallego.demo.domain.NumberProcessor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

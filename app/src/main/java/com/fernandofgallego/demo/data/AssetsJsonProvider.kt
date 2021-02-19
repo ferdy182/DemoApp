@@ -1,8 +1,8 @@
-package com.fernandofgallego.navviscodingchallenge.data
+package com.fernandofgallego.demo.data
 
 import android.content.res.AssetManager
 import android.util.Log
-import com.fernandofgallego.navviscodingchallenge.domain.JsonProvider
+import com.fernandofgallego.demo.domain.JsonProvider
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

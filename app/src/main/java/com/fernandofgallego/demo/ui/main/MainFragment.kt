@@ -1,20 +1,20 @@
-package com.fernandofgallego.navviscodingchallenge.ui.main
+package com.fernandofgallego.demo.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fernandofgallego.navviscodingchallenge.R
-import com.fernandofgallego.navviscodingchallenge.data.AssetsJsonProvider
-import com.fernandofgallego.navviscodingchallenge.data.NetworkJsonProvider
-import com.fernandofgallego.navviscodingchallenge.data.Repository
-import com.fernandofgallego.navviscodingchallenge.databinding.MainFragmentBinding
-import com.fernandofgallego.navviscodingchallenge.domain.JsonParser
-import com.fernandofgallego.navviscodingchallenge.domain.NumberProcessor
+import com.fernandofgallego.demo.R
+import com.fernandofgallego.demo.data.AssetsJsonProvider
+import com.fernandofgallego.demo.data.NetworkJsonProvider
+import com.fernandofgallego.demo.data.Repository
+import com.fernandofgallego.demo.databinding.MainFragmentBinding
+import com.fernandofgallego.demo.domain.JsonParser
+import com.fernandofgallego.demo.domain.NumberProcessor
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
